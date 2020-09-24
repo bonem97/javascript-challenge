@@ -2,18 +2,23 @@
 
 // from data.js
 // name variables
-var tableData = data;
-var tblColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
+let tableData = data;
+let tblColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
+
+function coll_add {
+	tblColumns.forEach(column => 
+		tblRow.append("td").text(dataRow[column]))
+}
 
 // Table_Reload
-var Table_Reload = (Data) => {
+let Table_Reload = (Data) => {
 	tbody.html("");
 		// adds a new row for each row of Data
 		Data.forEach(dataRow => { 
 			var tblRow = tbody.append("tr");  
 			
 			// adds columns
-			tblColumns.forEach(column => tblRow.append("td").text(dataRow[column]))
+			coll_add
 		});
 };
 
