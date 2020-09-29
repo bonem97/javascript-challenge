@@ -6,10 +6,10 @@ let tableData = data;
 let tbody = d3.select("tbody")
 let tblColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
  
-function coll_add {
-	tblColumns.forEach(column => 
-		tblRow.append("td").text(dataRow[column]))
-}
+//function coll_add {
+//	tblColumns.forEach(column => 
+//		tblRow.append("td").text(dataRow[column]))
+//}
 
 // Table_Reload
 let Table_Reload = {data.forEach(function(UFOinfo) {
@@ -27,10 +27,17 @@ let Table_Reload = {data.forEach(function(UFOinfo) {
 Table_Reload
 
 function UFO_Finder() {
-	d3.event.PreventDefault();
+	// d3.event.PreventDefault();
+
+	tbody.html("");
 
 	let filtered_list = tableData.filter(
 		UFO => UFO.datetime === d3.select("#datetime").property("value");
 	);
 	
+	filtered_list.forEach(function(UFOinfo)) {
+		Object.entries(UFOinfo).forEach(function([key, value]) {
+			tbody.append("tr").append("td").text(value);
+		};
+	};
 }
